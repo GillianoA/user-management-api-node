@@ -1,11 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-let users = [
-    { id: 1, name: 'user1', email: 'user1@example.com', department: 'IT' },
-    { id: 2, name: 'user2', email: 'user2@example.com', department: 'HR' },
-];
-
 exports.login = (req, res) => {
     const { username, password } = req.body;
 
@@ -24,21 +19,15 @@ exports.getUsers = (req, res) => {
 exports.getUserById = (req, res) => {
     const user = users.find(u => u.id === parseInt(req.params.id));
     if (!user) return res.status(404).json({ error: 'User not found' });
+
     res.json(user);
 }
 
 exports.createUser = (req, res) => {
-    const { name, email, department } = req.body;
-
-    const newUser = {
-        id: users.length + 1,
-        name,
-        email,
-        department
-    };
-
-    users.push(newUser);
-    res.status(201).json(newUser);
+    const { name, email, department} = req.body;
+    const user = { id: users.length + 1, name, email, department };
+    users.push(user);
+    res.status(201).json(user);
 }
 
 exports.updateUser = (req, res) => {
