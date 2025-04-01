@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 // import middleware
 const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(logger);
 app.use(errorHandler);
+app.use('/api/', userRoutes);
 
 const port = process.env.PORT || 3000;
 
