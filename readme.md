@@ -19,8 +19,8 @@ This project is a Node.js-based API for user management, providing basic CRUD op
 ## Authentication
 
 All protected routes require a valid JWT token in the Authorization header:
-```
-Authorization: Bearer <your_token_here```
+Authorization: Bearer <your_token_here>
+
 ## Error Handling
 The API includes basic error handling and logging middleware.
 ## Future Improvements
